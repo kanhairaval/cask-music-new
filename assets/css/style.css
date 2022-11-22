@@ -1,71 +1,179 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.Container{
-background: white;
-width: 100%;
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
+:root {
+    --grey: #282828; 
+    --red: #a43636;
+    --blue: #2f32b1;
+    --lightgrey: #9fa3b1; 
 }
 
-.Search-Bar{
-    background: cornflowerblue;
-    width: 90%;
-    max-width: 800px;
-    display: flex;
-    padding: 2px;
-    border-radius: 4px;
+html {
+    scroll-behavior: smooth;
+    height:100%;
+    background: linear-gradient(var(--grey) 60%, var(--blue), var(--red)) no-repeat;
 }
 
-#Select{
-    background: white ;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: black;
-    width: 300px;
-    padding: 25px 20px;
+body {
+    font-family:"Montserrat", sans-serif;
+}
+
+nav li {
+    display: inline;
+    list-style-type: none;
+    line-height: 2em;
+}
+
+nav ul {
+    padding-inline-start: 10px;
+    padding-inline-end: 10px;
+}
+
+#star-heart-top i {
+    margin-left: 30px;
+}
+
+#star-heart-top {
+    float: right;
+}
+
+#star-heart-top .fa-star,
+#star-heart-top .fa-heart {
     cursor: pointer;
-    position: relative;
-    border-radius: 4px;
-}
-#img{
-    width: 15px;
 }
 
-#Select ul{
-    position: absolute;
-    top: 120%;
-    left: 0;
-    list-style: none;
+nav ul li .fa-heart:hover:before {
+    color:var(--red);
+    text-shadow: 0px 0px 10px black;
+}
+
+nav ul li .fa-star:hover {
+    color:var(--blue);
+    text-shadow: 0px 0px 10px black;
+}
+
+#title {
+    color:white;
+}
+
+#page-title {
+    font-size: 50px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 2px;
+}
+
+#line {
+    height: 2px;
+    width: 21.5em;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(to left, var(--blue), var(--red));
+}
+
+#page-subtitle {
+    font-size: 10px;
+    font-style: italic;
+    font-weight: 300;
+    text-align: center;
+    text-transform: lowercase;
+    letter-spacing: 2px;
+    margin-top: 12px;
+}
+
+#search {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+}
+
+#search #search-box {
+    width: 450px;
     background: white;
-    color: black;
-    width: 100%;
-    border-radius: 4px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s;
+    border-radius: 5px;
+    height: 30px;
+    display: flex;
+    padding: 10px;
 }
 
-#Select ul li{
-    padding: 10px 20px;
+#search #search-box #dropdown {
+    width: 150px;
+    border-left: 2px solid var(--lightgrey);
+    color: var(--lightgrey);
+    position: relative;
     cursor: pointer;
-
 }
 
-.Search-Bar input{
-    padding: 10px 25px;
+#search #search-box #dropdown #default-option {
+    letter-spacing: 2px;
+    padding-top: 7px; 
+    padding-left: 15px;
+}
+
+#search #search-box #dropdown ul {
+    position: absolute;
+    top: 30px;
+    background: white;
+    width: 104px;
+    border-radius: 5px;
+    padding: 20px;
+    letter-spacing: 2px;
+    display: none;
+}
+
+#search #search-box #dropdown ul.show-options {
+    display: block;
+  }  
+
+#search #search-box #dropdown ul li {
+    list-style: none;
+}
+
+#by-song {
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--lightgrey);
+}
+
+#by-artist {
+    padding-top: 10px;
+}
+
+#search #search-box #search-field {
+    width: 350px;
+    height: 100%;
+    position: relative;
+}
+
+#search #search-box #search-field .input {
+    font-family:"Montserrat", sans-serif;
+    letter-spacing: 2px;
+    width: 90%;
+    height: 100%;
+    border: 0px;
+    font-size: 16px;
+    padding-left: 30px;
+    padding-right: 38px;
+  }
+
+#search #search-box #search-field .input:focus {
+    outline:0px;
+  }
+
+#search #search-box #search-field i {
+    position: absolute;
+    top: 5px;
+    font-size: 22px;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+footer {
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    color:white;
+    text-align: center;
+    letter-spacing: 2px;
+    position: fixed;
+    text-align: center;
+    bottom: 0px;
     width: 100%;
-    border: none;
-    outline: none;
-    font-size: 18px;
-}
-
-#Select ul.open{
-    max-height: 300px;
+    padding-top: 10px;
 }
