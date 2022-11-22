@@ -1,7 +1,10 @@
+// gets results from spotify
+// ?q= (put user search result)
+// type= (considers what type of search; multi, tracks, or artists)
 const spotifyResults = {
 	"async": true,
 	"crossDomain": true,
-	"url": "https://spotify23.p.rapidapi.com/search/?q=tracks&type=multi&offset=0&limit=8&numberOfTopResults=8",
+	"url": "https://spotify23.p.rapidapi.com/search/?q=search&type=multi&offset=0&limit=8&numberOfTopResults=8",
 	"method": "GET",
 	"headers": {
 		"X-RapidAPI-Key": "661870ef5emsh19190db4d6e2f83p1ce48cjsnaa117cab61b9",
@@ -25,29 +28,35 @@ $(document).ready(function () {
         var searchByOption = $(this).text();
         $("#default-option").html(searchByOption);
         $("#dropdown ul").toggleClass("show-options")
-    })
-})
+    });
 
 // when hovering over the nav icons, it will change their state to solid
-$(".nav-icons").mouseenter(function () {
-    $(this).hideClass("fa-regular");
-    },
-    function () {
-        $(this).addClass("fa-solid");
-});
+    $(".nav-icons").mouseenter(function () {
+        $(this).hideClass("fa-regular");
+        },
+        function () {
+            $(this).addClass("fa-solid");
+    });
 
 // when not hovering over nav icons, it will change their state back to regular
-$(".nav-icons").mouseleave(function() {      
-        if($(this).hasClass("fa-solid")){
-            $(this).removeClass("fa-solid");
-            $(this).showClass("fa-regular");
-        }
+    $(".nav-icons").mouseleave(function() {      
+            if($(this).hasClass("fa-solid")){
+                $(this).removeClass("fa-solid");
+                $(this).showClass("fa-regular");
+            }
     });
 
 // when click or press enter, then print anything written within input search box
-$(document).ready(function() {
+// it currently also takes into account which option the user picked in the dropdown
     $(".fa-search").click(function() {
         var userInput = $("input").val();
+            if($("#default-option").html() === " song") {
+                console.log("tracks");
+            }
+            else if($("#default-option").html() === " artist") {
+                console.log("artists")
+        };
+
         console.log(userInput);
     }); 
 
@@ -55,7 +64,14 @@ $(document).ready(function() {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
             userInput = $("input").val();
-            console.log(userInput);
-        }
-      });
+            if($("#default-option").html() === " song") {
+                console.log("tracks");
+            }
+            else if($("#default-option").html() === " artist") {
+                console.log("artists")
+        };
+
+        console.log(userInput);
+    }});
 });
+

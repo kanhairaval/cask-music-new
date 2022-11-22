@@ -7,7 +7,7 @@
 
 html {
     scroll-behavior: smooth;
-    height:100%;
+    height: 100%;
     background: linear-gradient(var(--grey) 60%, var(--blue), var(--red)) no-repeat;
 }
 
@@ -15,23 +15,13 @@ body {
     font-family:"Montserrat", sans-serif;
 }
 
-nav li {
-    display: inline;
-    list-style-type: none;
-    line-height: 2em;
-}
-
 nav ul {
     padding-inline-start: 10px;
-    padding-inline-end: 10px;
+    padding-inline-end: 20px;
 }
 
-#star-heart-top i {
+#star-heart-top .fa-heart {
     margin-left: 30px;
-}
-
-#star-heart-top {
-    float: right;
 }
 
 #star-heart-top .fa-star,
@@ -49,16 +39,8 @@ nav ul li .fa-star:hover {
     text-shadow: 0px 0px 10px black;
 }
 
-#title {
-    color:white;
-}
-
 #page-title {
     font-size: 50px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 2px;
 }
 
 #line {
@@ -70,91 +52,53 @@ nav ul li .fa-star:hover {
 }
 
 #page-subtitle {
-    font-size: 10px;
-    font-style: italic;
-    font-weight: 300;
-    text-align: center;
-    text-transform: lowercase;
+    font-size: 11.5px;
     letter-spacing: 2px;
-    margin-top: 12px;
-}
-
-#search {
-    display: flex;
-    justify-content: center;
-    padding: 10px;
 }
 
 #search #search-box {
     width: 450px;
-    background: white;
-    border-radius: 5px;
-    height: 30px;
-    display: flex;
-    padding: 10px;
 }
 
 #search #search-box #dropdown {
     width: 150px;
     border-left: 2px solid var(--lightgrey);
     color: var(--lightgrey);
-    position: relative;
     cursor: pointer;
 }
 
 #search #search-box #dropdown #default-option {
     letter-spacing: 2px;
-    padding-top: 7px; 
-    padding-left: 15px;
 }
 
 #search #search-box #dropdown ul {
-    position: absolute;
-    top: 30px;
-    background: white;
-    width: 104px;
-    border-radius: 5px;
-    padding: 20px;
+    width: 137px;
     letter-spacing: 2px;
     display: none;
 }
 
 #search #search-box #dropdown ul.show-options {
     display: block;
-  }  
-
-#search #search-box #dropdown ul li {
-    list-style: none;
-}
+}  
 
 #by-song {
-    padding-bottom: 10px;
     border-bottom: 2px solid var(--lightgrey);
-}
-
-#by-artist {
-    padding-top: 10px;
 }
 
 #search #search-box #search-field {
     width: 350px;
-    height: 100%;
-    position: relative;
 }
 
 #search #search-box #search-field .input {
     font-family:"Montserrat", sans-serif;
     letter-spacing: 2px;
     width: 90%;
-    height: 100%;
-    border: 0px;
-    font-size: 16px;
     padding-left: 30px;
     padding-right: 38px;
   }
 
 #search #search-box #search-field .input:focus {
-    outline:0px;
+    outline: 0px;
   }
 
 #search #search-box #search-field i {
@@ -166,14 +110,6 @@ nav ul li .fa-star:hover {
 }
 
 footer {
-    font-family: "Montserrat", sans-serif;
-    text-transform: uppercase;
-    color:white;
-    text-align: center;
     letter-spacing: 2px;
-    position: fixed;
-    text-align: center;
-    bottom: 0px;
-    width: 100%;
     padding-top: 10px;
 }

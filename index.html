@@ -8,9 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- CSS FILES GET LINKED HERE -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;1,300&display=swap">
-    <link rel="stylesheet" href="https://cdn.tailwindcss.com/3.2.4 ">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" /> 
     <link rel="stylesheet" href="./assets/css/style.css">
 
     <!-- logo to be changed later -->
@@ -24,39 +26,39 @@
 <body>
 
 <!-- NAVIGATION -->
-    <nav>
+    <nav class="pt-5">
         <!-- logo to be changed later -->
         <ul>
-        <li id="logo"><i class="fa-solid fa-music fa-inverse fa-2xl"></i></li>
-        <div id="star-heart-top">
-            <li><i class="nav-icons fa-regular fa-star fa-inverse fa-xl"></i></li>
-            <li><i class="nav-icons fa-regular fa-heart fa-inverse fa-xl"></i></li>
+        <li id="logo" class="inline leading-loose"><i class="fa-solid fa-music fa-inverse fa-2xl"></i></li>
+        <div id="star-heart-top" class="float-right">
+            <li class="inline leading-loose"><i class="nav-icons fa-regular fa-star fa-inverse fa-xl"></i></li>
+            <li class="inline leading-loose"><i class="nav-icons fa-regular fa-heart fa-inverse fa-xl"></i></li>
         </ul>
         </div>
     </nav>
 
 <!-- HEADER -->
     <div id="top-page">
-        <header id="title">
-            <h1 id="page-title">CASK Music</h1>
+        <header id="title" class="text-white">
+            <h1 id="page-title" class="text-center uppercase tracking-wider">CASK Music</h1>
             <div id="line"></div>
-            <h2 id="page-subtitle">Search for your fave music all in one place!!</h2>
+            <h2 id="page-subtitle" class="text-center lowercase font-light my-4">Search for your fave music all in one place!!</h2>
         </header>
 
-        <section id="search">
+        <section id="search" class="flex justify-center p-2.5">
             <!-- SEARCH BAR GOES HERE -->
             <!-- DROPDOWN LIST GOES HERE -->
             <!-- this will be using tailwind -->
-                <div id="search-box">
-                    <div id="search-field">
-                      <input name="search-bar" id="search-bar" type="text" class="input" placeholder="search">
-                      <i class="fas fa-search"></i>
+                <div id="search-box" class="flex bg-white rounded p-2.5">
+                    <div id="search-field" class="relative h-full">
+                        <i class="fas fa-search"></i>
+                        <input name="search-bar" id="search-bar" type="text" class="input py-1 h-full border-0 text-base" placeholder="search">
                   </div>
-                  <div id="dropdown">
-                    <div id="default-option">search by</div>  
-                    <ul>
-                      <li id="by-song"><i class="fa-regular fa-heart fa-sm"></i> song</li>
-                      <li id="by-artist"><i class="fa-regular fa-star fa-sm"></i> artist</li>
+                  <div id="dropdown" class="relative">
+                    <div id="default-option" class="text-base pt-0.5 pl-3">search by</div>  
+                    <ul class="absolute top-10 bg-white rounded p-5">
+                      <li id="by-song" class="pb-2.5 list-none"><i class="fa-regular fa-heart fa-sm"></i> song</li>
+                      <li id="by-artist" class="pt-2.5 list-none"><i class="fa-regular fa-star fa-sm"></i> artist</li>
                     </ul>
                 </div>
                 </div>
@@ -73,13 +75,13 @@
     </main>
 
 <!-- FOOTER -->
-    <footer>
+    <footer class="text-center fixed uppercase text-white bottom-1 w-full pt-2.5">
         <h5 id="copyright">© CASK 2022</h5>
     </footer>
 
     <!-- SCRIPT FILES GO HERE -->
-    <!-- <script rel="javascript" src="https://cdn.tailwindcss.com"></script> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
     <script rel="javascript" src="./assets/js/script.js"></script>
 </body>
 </html>
