@@ -1,3 +1,19 @@
+// let reqURL1 = new URL("https://spotify23.p.rapidapi.com/search/?q=test&type=multi&offset=0&limit=10&numberOfTopResults=5");
+// let reqURL2 = new URL("https://youtube-music1.p.rapidapi.com/v2/search?query=test");
+// let params1 = reqURL1.searchParams;
+// let params2 = reqURL2.searchParams;
+
+// params1.set("q", "Lady+Gaga");
+// params1.set("type", "tracks");
+
+// console.log(reqURL1);
+
+// params2.set("query", "Adele");
+
+// console.log(reqURL2);
+
+let userInput = ''
+
 const spotifyResults = {
 	"async": true,
 	"crossDomain": true,
@@ -9,9 +25,9 @@ const spotifyResults = {
 	}
 };
 
-$.ajax(spotifyResults).done(function (response) {
-	console.log(response);
-});
+// $.ajax(spotifyResults).done(function (response) {
+// 	console.log(response);
+// });
 
 // when clicking on the dropdown on search bar, 
 // it will toggle the class "show-options", 
@@ -47,8 +63,8 @@ $(".nav-icons").mouseleave(function() {
 // when click or press enter, then print anything written within input search box
 $(document).ready(function() {
     $(".fa-search").click(function() {
-        var userInput = $("input").val();
-        console.log(userInput);
+        userInput = $("input").val();
+        getResults(userInput);
     }); 
 
     $(document).keypress(function(event){
@@ -56,6 +72,27 @@ $(document).ready(function() {
         if(keycode == '13'){
             userInput = $("input").val();
             console.log(userInput);
+            return;
         }
       });
 });
+
+let resultsRendered = document.createElement('ul')
+let artistName = document.createElement('li');
+let mainSec = document.getElementById('main');
+
+function getResults(){
+    $.ajax(spotifyResults).done(function(response) {
+        console.log(response.tracks);
+        response?.tracks?.items.forEach(function(item){
+            artistName.innerHTML = item.data.artists.items[0].profile.name;
+            //artistImage.src = response.artists.items[0].data.visuals.avatarImage.sources[0].url;       
+            resultsRendered.append(artistName);
+            mainSec.append(resultsRendered);
+            console.log(artistName);
+        });
+    });
+};
+
+
+  //spotifyResults.tracks
