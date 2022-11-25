@@ -1,71 +1,162 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-}
-.Container{
-background: white;
-width: 100%;
-height: 100vh;
-display: flex;
-align-items: center;
-justify-content: center;
+:root {
+    --grey: #282828; 
+    --red: #a43636;
+    --blue: #2f32b1;
+    --lightgrey: #9fa3b1; 
 }
 
-.Search-Bar{
-    background: cornflowerblue;
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    background: linear-gradient(var(--grey) 60%, var(--blue), var(--red)) no-repeat;
+    background-attachment: fixed;
+}
+
+body {
+    font-family:"Montserrat", sans-serif;
+}
+
+nav ul {
+    padding-inline-start: 10px;
+    padding-inline-end: 20px;
+}
+
+#star-heart-top .fa-heart {
+    margin-left: 30px;
+}
+
+#star-heart-top .fa-star,
+#star-heart-top .fa-heart {
+    cursor: pointer;
+}
+
+nav ul li .fa-heart:hover:before {
+    color:var(--red);
+    text-shadow: 0px 0px 10px black;
+}
+
+nav ul li .fa-star:hover {
+    color:var(--blue);
+    text-shadow: 0px 0px 10px black;
+}
+
+#page-title {
+    font-size: 55px;
+}
+
+#line {
+    height: 2px;
+    width: 21.5em;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(to left, var(--blue), var(--red));
+}
+
+#page-subtitle {
+    font-size: 11.5px;
+    letter-spacing: 2px;
+}
+
+#search #search-box {
+    width: 450px;
+}
+
+#search #search-box #dropdown {
+    width: 150px;
+    border-left: 2px solid var(--lightgrey);
+    color: var(--lightgrey);
+    cursor: pointer;
+}
+
+#search #search-box #dropdown #default-option {
+    letter-spacing: 2px;
+}
+
+#search #search-box #dropdown ul {
+    width: 137px;
+    letter-spacing: 2px;
+    display: none;
+}
+
+#search #search-box #dropdown ul.show-options {
+    display: block;
+}  
+
+#by-song {
+    border-bottom: 2px solid var(--lightgrey);
+}
+
+#search #search-box #search-field {
+    width: 350px;
+}
+
+#search #search-box #search-field .input {
+    font-family:"Montserrat", sans-serif;
+    letter-spacing: 2px;
     width: 90%;
-    max-width: 800px;
-    display: flex;
-    padding: 2px;
-    border-radius: 4px;
-}
+    padding-left: 30px;
+    padding-right: 38px;
+  }
 
-#Select{
-    background: white ;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    color: black;
-    width: 300px;
-    padding: 25px 20px;
-    cursor: pointer;
-    position: relative;
-    border-radius: 4px;
-}
-#img{
-    width: 15px;
-}
+#search #search-box #search-field .input:focus {
+    outline: 0px;
+  }
 
-#Select ul{
+#search #search-box #search-field i {
     position: absolute;
-    top: 120%;
-    left: 0;
-    list-style: none;
-    background: white;
-    color: black;
-    width: 100%;
-    border-radius: 4px;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.5s;
-}
-
-#Select ul li{
-    padding: 10px 20px;
+    top: 5px;
+    font-size: 22px;
+    color: var(--blue);
     cursor: pointer;
-
 }
 
-.Search-Bar input{
-    padding: 10px 25px;
-    width: 100%;
-    border: none;
-    outline: none;
-    font-size: 18px;
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 80%;
 }
 
-#Select ul.open{
-    max-height: 300px;
+.result-container {
+    width: 200px;
+    max-height: auto;
+    padding: 15px;
+    margin: 20px;
+    background-color: white;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.result-container img {
+    justify-content: center;
+    position:relative;
+    width: 170px;
+    border-width: 0;
+    border-radius: 4px;
+}
+
+.artist-name {
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 2px;
+    
+}
+
+.song-name {
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.link-hub i {
+    font-size: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+footer {
+    letter-spacing: 2px;
+    padding-top: 10px;
 }
