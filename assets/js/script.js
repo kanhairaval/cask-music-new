@@ -109,13 +109,28 @@ $(document).ready(function () {
                 $(spotifyIcon).addClass("fa-brands");
                 $(spotifyIcon).addClass("fa-spotify");
 
-                let youtubeLink = document.createElement('a');
-                youtubeLink.href =  "https://www.youtube.com/watch?v=";
-                $(youtubeLink).addClass("yt-link");
+                // let youtubeLink = document.createElement('a');
+                // youtubeLink.href =  "https://www.youtube.com/watch?v=";
+                // $(youtubeLink).addClass("yt-link");
+
+                let youtubeLink = document.createElement("a");
+                    fetch(youtubeMusicURL, URLs[1])
+                    .then((jsonResponse) => jsonResponse.json())
+                    .then((data) => {
+                     let youtube = data.result.videos.map((val) => val.id);
+
+                   youtubeLink.href = `https://www.youtube.com/watch?v=${youtube}`;
+                 })
+                 .catch((err) => {
+                    console.log(err);
+                  });
+               
 
                 let youtubeIcon = document.createElement('i');
                 $(youtubeIcon).addClass("fa-brands");
                 $(youtubeIcon).addClass("fa-youtube");
+
+                $(youtubeLink).addClass("yt-link");
 
                 spotifyLink.append(spotifyIcon);
                 youtubeLink.append(youtubeIcon);
@@ -179,6 +194,8 @@ $(document).ready(function () {
             })
 
         })
+
+        
 
         // function getData(artistName, songName) {
         //     $.ajax(URLs[1]).done(function(response) {
@@ -255,7 +272,7 @@ $(document).ready(function () {
             "crossDomain": true,
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "5fe74e009cmsh28c55109e96d80ep1ef9acjsn3ac6d6e732c7",
+                "X-RapidAPI-Key": "011ce89769msh6e180690fb08442p1a266ajsne3b7f9c28356",
                 "X-RapidAPI-Host": "spotify23.p.rapidapi.com"
             }
         };
@@ -265,7 +282,7 @@ $(document).ready(function () {
             "crossDomain": true,
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "42d9135f5bmshb34948204f201fcp1a883ajsn81dc27681c59",
+                "X-RapidAPI-Key": "011ce89769msh6e180690fb08442p1a266ajsne3b7f9c28356",
                 "X-RapidAPI-Host": "youtube-music1.p.rapidapi.com"
             }
         };
@@ -296,6 +313,7 @@ $(document).ready(function () {
 // when click or press enter, then print anything written within input search box
 // it currently also takes into account which option the user picked in the dropdown
     $(".fa-search").click(function() {
+        $("#main").empty();
         userInput = $("input").val();
         baseParam = userInput;
         searchOption = $("#default-option").html();
@@ -307,6 +325,8 @@ $(document).ready(function () {
     $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
+            $("#main").empty();
+            resultContainerEl.removeChild();
             userInput = $("input").val();
             searchOption = $("#default-option").html();
             searchBy();
@@ -315,3 +335,4 @@ $(document).ready(function () {
         }
     });
 });
+
