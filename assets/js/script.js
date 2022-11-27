@@ -88,6 +88,7 @@ $(document).ready(function () {
 
                     let spotifyIcon = document.createElement("i");
                     let youtubeIcon = document.createElement("i");
+                    let heartDefault = document.createElement("i");
 
                     // add classes to each so it can be easily styled
                     $(linkHub).addClass("link-hub");
@@ -103,6 +104,10 @@ $(document).ready(function () {
                     $(youtubeIcon).addClass("fa-brands");
                     $(youtubeIcon).addClass("fa-youtube");
 
+                    $(heartDefault).addClass("fa-regular");
+                    $(heartDefault).addClass("fa-heart");
+                    $(heartDefault).addClass("like-heart");
+
                     // defining the content within each created element
                     // these use data fetched from the api & does so for each result
                     artistName.innerHTML = spotifyData.tracks.items[i].data.artists.items[0].profile.name;
@@ -114,7 +119,7 @@ $(document).ready(function () {
                     // appends each element as needed 
                     spotifyLink.append(spotifyIcon);
                     youtubeLink.append(youtubeIcon);
-                    linkHub.append(spotifyLink, youtubeLink);
+                    linkHub.append(spotifyLink, youtubeLink, heartDefault);
                     resultsRendered.append(artistName, songName, coverArt, linkHub);
                     mainSec.append(resultsRendered);
                 }
@@ -129,7 +134,7 @@ $(document).ready(function () {
             fetch(youtubeURL,URLs[1]).then(function(response){
                     return response.json()
 
-                    // after, create elements based on data within said json
+                // after, create elements based on data within said json
                 }).then(function getfromYoutube (youtubeData){
 
                     let ytData = youtubeData
@@ -152,6 +157,7 @@ $(document).ready(function () {
 
                         let youtubeIcon = document.createElement("i");
                         let spotifyIcon = document.createElement("i");
+                        let starDefault = document.createElement("i");
 
                         // add classes to each so it can be easily styled
                         $(linkHub).addClass("link-hub");
@@ -167,6 +173,10 @@ $(document).ready(function () {
                         $(spotifyIcon).addClass("fa-brands");
                         $(spotifyIcon).addClass("fa-spotify");
 
+                        $(starDefault).addClass("fa-regular");
+                        $(starDefault).addClass("fa-star");
+                        $(starDefault).addClass("like-star");
+
                          // defining the content within each created element
                         // these use data fetched from the api & does so for each result
                         artistName.innerHTML = youtubeData.items[i].snippet.channelTitle;
@@ -178,7 +188,7 @@ $(document).ready(function () {
                         // appends each element as needed 
                         youtubeLink.append(youtubeIcon);
                         spotifyLink.append(spotifyIcon);
-                        linkHub.append(youtubeLink, spotifyLink);
+                        linkHub.append(youtubeLink, spotifyLink, starDefault);
                         resultsRendered.append(artistName, songName, coverArt, linkHub);
                         mainSec.append(resultsRendered);
                     };
@@ -198,34 +208,70 @@ $(document).ready(function () {
         if (searchOption.includes("song")) {
             searchType = "tracks";
             getResults(userInput, searchType);
-            console.log(searchType);
             return searchType;
 
         } else if (searchOption.includes("video")) {
             searchType = "videos";
             getResults(userInput, searchType);
-            console.log(searchType);
             return searchType;
         }
      }
 
+     // when heart is clicked, it gives it a fontawesome class to make it solid
+     // as well as a "liked-song" class
+     // it also removes classes if clicked twice
+     $(document).on("click", ".like-heart", function (event) {
+        if ($(this).hasClass("fa-solid")) {
+            $(this).removeClass("fa-solid");
+            $(this).addClass("fa-regular");
+        } else {
+            $(this).removeClass("fa-regular");
+                $(this).addClass("fa-solid");
+        }
+
+        if ($(this).hasClass("liked-song")) {
+            $(this).removeClass("liked-song");
+        } else {
+                $(this).addClass("liked-song");
+        }
+    })
+
+    // when star is clicked, it gives it a fontawesome class to make it solid
+     // as well as a "liked-video" class
+     // it also removes classes if clicked twice
+    $(document).on("click", ".like-star", function (event) {
+        if ($(this).hasClass("fa-solid")) {
+            $(this).removeClass("fa-solid");
+            $(this).addClass("fa-regular");
+        } else {
+            $(this).removeClass("fa-regular");
+                $(this).addClass("fa-solid");
+        }
+        
+        if ($(this).hasClass("liked-video")) {
+            $(this).removeClass("liked-video");
+        } else {
+                $(this).addClass("liked-video");
+        }
+    })
+
      // dropdown on search appears when clicked
-     $("#default-option").click(function () {
+     $("#default-option").click(function() {
         $("#dropdown ul").toggleClass("show-options");
     });
 
     // when an option is selected in the dropdown menu, it replaces the default "search by" text
-    $("#dropdown ul li").click(function () {
+    $("#dropdown ul li").click(function() {
         var searchByOption = $(this).text();
         $("#default-option").html(searchByOption);
         $("#dropdown ul").toggleClass("show-options")
     });
 
     // when hovering over the nav icons, it will change their state to solid
-    $(".nav-icons").mouseenter(function () {
+    $(".nav-icons").mouseenter(function() {
         $(this).hideClass("fa-regular");
         },
-        function () {
+        function() {
             $(this).addClass("fa-solid");
     });
 
@@ -249,12 +295,10 @@ $(document).ready(function () {
     $(document).keypress(function(event){
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
-            mainSec.innerHTML = ""
-            .then(function() {
-                userInput = $("input").val();
-                searchOption = $("#default-option").html();
-                searchBy();
-            });
-        };
+            userInput = $("input").val();
+            searchOption = $("#default-option").html();
+            mainSec.innerHTML = "";
+            searchBy();
+        }
     });
 });
