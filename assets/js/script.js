@@ -108,6 +108,9 @@ $(document).ready(function () {
                     $(heartDefault).addClass("fa-heart");
                     $(heartDefault).addClass("like-heart");
 
+                    // all links will be opened in a separate tab
+                    $("a").attr("target","_blank");
+
                     // defining the content within each created element
                     // these use data fetched from the api & does so for each result
                     artistName.innerHTML = spotifyData.tracks.items[i].data.artists.items[0].profile.name;
@@ -165,6 +168,9 @@ $(document).ready(function () {
                         $(artistName).addClass("channel-name");
                         $(songName).addClass("video-title")
                         $(coverArt).addClass("thumbnail");
+
+                        // all links will be opened in a separate tab
+                        $("a").attr("target","_blank");
 
                          // icons get special classes used by fontawesome
                         $(youtubeIcon).addClass("fa-brands");
