@@ -1,8 +1,6 @@
 # cask music
 
-## Project 1
-
-### Description
+## Description
 
 Cask Music is a music & video search engine using Spotify & YouTube APIs.
 This page helps the user search for their favourite music all in one
@@ -26,7 +24,7 @@ effectively version control with multiple people working on the same
 project, successful Git branching methods, agile methodology, & how to use
 kanban to manage schedules & workloads.
 
-### Screenshot
+## Screenshot
 
 Here is a preview of the deployed website.
 
@@ -40,29 +38,34 @@ This picture show how it looks like when you press 1 of the 2 nav bar icons.
 It displays your favourite songs under heart & favourite videos under star.
 This is a preview of favourite videos.
 
-### Credits
+## Credits
 
-Spotify, Youtube, & Google
-Spotify API by Glavier
-Youtube v3 API by ytdlfree
+- Spotify, Youtube, & Google 
 
-Carlo - https://github.com/C-Caballer0
-Addy - https://github.com/kirbyfridge
-Semir - https://github.com/seper56
-Kanhai - https://github.com/kanhairaval
+- Spotify API by Glavier 
 
-### GitHub Repository
+- Youtube v3 API by ytdlfree
+
+- Carlo - https://github.com/C-Caballer0
+
+- Addy - https://github.com/kirbyfridge
+
+- Semir - https://github.com/seper56
+
+- Kanhai - https://github.com/kanhairaval
+
+## GitHub Repository
 
 You can view our coding process at the link below.
 
 https://github.com/kanhairaval/cask-music-new/
 
-### GitHub Pages
+## GitHub Pages
 
 You can view the functional webpage at the link below.
 
 https://kanhairaval.github.io/cask-music-new/
 
-### License
+## License
 
 Please refer to the license in the repo.
