@@ -31,7 +31,7 @@ Here is a preview of the deployed website.
 ![Alt text](assets/images/screenshot-1.png)
 This picture depicts a user searching for a song.
 Due to the small hard limit of the Spotify API, the top 4 results will show.
-The top 4 results will also show for videos to keep it consistent.
+The top 4 results will also show 4 videos to keep it consistent.
 
 ![Alt text](assets/images/screenshot-2.png)
 This picture show how it looks like when you press 1 of the 2 nav bar icons.
