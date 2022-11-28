@@ -1,8 +1,11 @@
+let favSongs = [];
+let favVids = [];
+let onScreen = [];
+
 $(document).ready(function () {
 
     // empty arrays to push favourite songs & videos to
-    var faveSongs = [];
-    var faveVids = [];
+    
 
     // where all data is being stored for each result
     var data = {
@@ -20,6 +23,7 @@ $(document).ready(function () {
 
     // main section will hold all results rendered onto the page
     let mainSec = document.getElementById("main");
+    let resultRender = document.getElementsByClassName("result-container");
 
 
     // will request and get data from spotify & youtube with given keys 
@@ -29,7 +33,7 @@ $(document).ready(function () {
             "crossDomain": true,
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "5fe74e009cmsh28c55109e96d80ep1ef9acjsn3ac6d6e732c7",
+                "X-RapidAPI-Key": "86b212263bmsh3fe6eb25d3b5fd5p17c0f9jsn719125bf4984",
                 "X-RapidAPI-Host": "spotify23.p.rapidapi.com"
             }
         };
@@ -38,8 +42,8 @@ $(document).ready(function () {
             "crossDomain": true,
             "method": "GET",
             "headers": {
-                "X-RapidAPI-Key": "5fe74e009cmsh28c55109e96d80ep1ef9acjsn3ac6d6e732c7",
-                "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com"
+                "X-RapidAPI-Key": "86b212263bmsh3fe6eb25d3b5fd5p17c0f9jsn719125bf4984",
+                "X-RapidAPI-Host": "youtube-music1.p.rapidapi.com"
             }
         };
     
@@ -74,6 +78,8 @@ $(document).ready(function () {
                 for(var i=0; i<spotifyData.tracks.items.length; i++) { 
 
                     // create elements for each item needed to show response on page
+            
+
                     let linkHub = document.createElement("div");
 
                     let resultsRendered = document.createElement("ul");
@@ -125,6 +131,10 @@ $(document).ready(function () {
                     linkHub.append(spotifyLink, youtubeLink, heartDefault);
                     resultsRendered.append(artistName, songName, coverArt, linkHub);
                     mainSec.append(resultsRendered);
+                    //tempArray = [artistName.innerHTML, songName.innerHTML, coverArt.src, spotifyLink.href, youtubeLink.href];
+                    //songJSON = JSON.stringify(tempArray);
+                    
+                    
                 }
             });
         }
@@ -140,12 +150,11 @@ $(document).ready(function () {
                 // after, create elements based on data within said json
                 }).then(function getfromYoutube (youtubeData){
 
-                    let ytData = youtubeData
-
                     // for each youtube response result
                     for(var i=0; i < youtubeData.items.length; i++) {
 
                         // create elements for each item needed to show response on page
+                        
                         let linkHub = document.createElement("div");
 
                         let resultsRendered = document.createElement("ul");
@@ -209,6 +218,7 @@ $(document).ready(function () {
         return searchParam;
     }
     
+    
     // when searching with the dropdown, it takes into account what search is desired by user
     function searchBy(){
         if (searchOption.includes("song")) {
@@ -223,22 +233,51 @@ $(document).ready(function () {
         }
      }
 
+    function updateLists(songData){
+        if ($(this).hasClass("liked-song") && (favSongs.includes(songData) === false)){
+            favSongs.push(songData);
+        } else if (!($(this).hasClass("liked-song")) && (favSongs.includes(songData) === true)){
+            const songIndex = favSongs.indexOf(songData);
+            favSongs.splice(songIndex, 1);
+        }
+
+        if ($(this).hasClass("liked-video") && (favVids.includes(songData) === false)){
+            favVids.push(songData);
+        } else if (!($(this).hasClass("liked-video")) && (favVids.includes(songData) === true)){
+            const vidIndex = favVids.indexOf(songData);
+            favVids.splice(vidIndex, 1);
+        }
+
+        localStorage.setItem("favSong", JSON.stringify(favSongs));
+        localStorage.setItem("favVid", JSON.stringify(favVids));
+     }
      // when heart is clicked, it gives it a fontawesome class to make it solid
      // as well as a "liked-song" class
      // it also removes classes if clicked twice
      $(document).on("click", ".like-heart", function (event) {
+
+        resultContainer = $(this).closest("ul");
+        
+        favSongs.push(resultContainer);
+        
         if ($(this).hasClass("fa-solid")) {
             $(this).removeClass("fa-solid");
             $(this).addClass("fa-regular");
+            updateLists(JSON.stringify(resultContainer));
+           
         } else {
             $(this).removeClass("fa-regular");
-                $(this).addClass("fa-solid");
+            $(this).addClass("fa-solid");
+            updateLists(JSON.stringify(resultContainer));
+            
         }
 
         if ($(this).hasClass("liked-song")) {
             $(this).removeClass("liked-song");
+            
         } else {
-                $(this).addClass("liked-song");
+            $(this).addClass("liked-song");
+            
         }
     })
 
@@ -249,15 +288,39 @@ $(document).ready(function () {
         if ($(this).hasClass("fa-solid")) {
             $(this).removeClass("fa-solid");
             $(this).addClass("fa-regular");
+            
+
         } else {
             $(this).removeClass("fa-regular");
-                $(this).addClass("fa-solid");
+            $(this).addClass("fa-solid");
+            
         }
         
         if ($(this).hasClass("liked-video")) {
             $(this).removeClass("liked-video");
+            $(this).vidFav = false;
+            
+
         } else {
                 $(this).addClass("liked-video");
+                $(this).vidFav = false;
+                
+        }
+    })
+
+    $(document).on("click", ".favSong", function (event) {
+        localStorage.getItem("favSong");
+        resultRender.innerHTML = "";
+        for(var i = 0; i < favSongs.length; i++) {
+        resultRender.append(favSongs[i]);
+        }
+    })
+
+    $(document).on("click", ".favVid", function (event) {
+        localStorage.getItem("favVid");
+        mainSec.innerHTML = "";
+        for(var i = 0; i < favVids.length; i++) {
+
         }
     })
 
@@ -291,7 +354,7 @@ $(document).ready(function () {
     // when click or press enter, then print anything written within input search box
     // it currently also takes into account which option the user picked in the dropdown
     $(".fa-search").click(function() {
-        mainSec.innerHTML = ""
+        mainSec.innerHTML = "";
         userInput = $("input").val();
             baseParam = userInput;
             searchOption = $("#default-option").html();
