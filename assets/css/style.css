@@ -1,0 +1,311 @@
+:root {
+    --grey: #282828; 
+    --red: #a43636;
+    --blue: #2f32b1;
+    --lightgrey: #9fa3b1; 
+    --yt: #FF0000;
+    --sp: #1DB954;
+}
+
+html {
+    scroll-behavior: smooth;
+    height: 100%;
+    background: linear-gradient(var(--grey) 60%, var(--blue), var(--red)) no-repeat;
+    background-attachment: fixed;
+}
+
+body {
+    font-family:"Montserrat", sans-serif;
+}
+
+nav ul {
+    padding-inline-start: 10px;
+    padding-inline-end: 20px;
+}
+
+#logo {
+    height: 24px;
+}
+
+#star-heart-top .fa-heart {
+    margin-left: 30px;
+}
+
+#star-heart-top .fa-star,
+#star-heart-top .fa-heart {
+    cursor: pointer;
+}
+
+nav ul li .fa-heart:hover:before {
+    color:var(--red);
+    text-shadow: 0px 0px 10px black;
+}
+
+nav ul li .fa-star:hover {
+    color:var(--blue);
+    text-shadow: 0px 0px 10px black;
+}
+
+#page-title {
+    font-size: 55px;
+    cursor: default;
+}
+
+#line {
+    height: 2px;
+    width: 21.5em;
+    margin-left: auto;
+    margin-right: auto;
+    background: linear-gradient(to left, var(--blue), var(--red));
+}
+
+#page-subtitle {
+    font-size: 11.5px;
+    letter-spacing: 2px;
+    cursor: default;
+}
+
+#search #search-box {
+    width: 450px;
+}
+
+#search #search-box #dropdown {
+    width: 150px;
+    border-left: 2px solid var(--lightgrey);
+    color: var(--lightgrey);
+    cursor: pointer;
+}
+
+#search #search-box #dropdown #default-option {
+    letter-spacing: 2px;
+}
+
+#search #search-box #dropdown ul {
+    width: 137px;
+    letter-spacing: 2px;
+    z-index: 1;
+    box-shadow: 0px 0px 5px var(--grey);
+    display: none;
+}
+
+#search #search-box #dropdown ul.show-options {
+    display: block;
+}  
+
+#by-song {
+    border-bottom: 2px solid var(--lightgrey);
+}
+
+#search #search-box #search-field {
+    width: 350px;
+}
+
+#search #search-box #search-field .input {
+    font-family:"Montserrat", sans-serif;
+    letter-spacing: 2px;
+    width: 113%;
+    padding-left: 30px;
+    padding-right: 38px;
+  }
+
+#search #search-box #search-field .input:focus {
+    outline: 0px;
+  }
+
+#search #search-box #search-field i {
+    position: absolute;
+    top: 5px;
+    font-size: 22px;
+    color: var(--blue);
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    flex: 50%;
+}
+
+.result-container {
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    width: 200px;
+    height: 300px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin: 20px;
+    background-color: white;
+    justify-content: center;
+    border-radius: 4px;
+
+    transition: all .2s ease-in-out;
+
+    animation: dropfadedown .5s ease-in-out forwards;
+    animation-iteration-count:1;
+
+    -webkit-animation: dropfadedown .5s;
+    -webkit-animation-iteration-count:1;
+}
+
+.result-container:hover {
+    transform: scale(1.1);
+    box-shadow: 0px 0px 10px black;
+}
+
+.result-container img {
+    position: absolute;
+    bottom: 50px;
+    border-width: 0;
+    border-radius: 4px;
+}
+
+.result-container .cover-art {
+    object-fit: contain;
+    height: 170px;
+    width: 170px;
+}
+
+.result-container .thumbnail {
+    object-fit: none;
+    height: 170px;
+    width: 170px;
+}
+
+.artist-name {
+    line-height: 16px;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: default;
+}
+
+.channel-name {
+    line-height: 16px;
+    text-align: center;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: default;
+}
+
+.video-title {
+    position: absolute;
+    top: 35px;
+    line-height: 15px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: default;
+}
+
+.song-name {
+    position: absolute;
+    top: 45px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 2px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    cursor: default;
+}
+
+.link-hub {
+    position: absolute;
+    left: 15px;
+    bottom: 10px;
+}
+
+.link-hub i {
+    font-size: 20px;
+    padding-right: 20px;
+}
+
+.link-hub .fa-heart {
+    padding-right: 0;
+    position: absolute;
+    right: -90px;
+    top: -4px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.link-hub .fa-heart:active {
+    transform: scale(1.1);
+}
+
+.liked-song {
+    color: var(--red);
+}
+
+.link-hub .fa-star {
+    padding-right: 0;
+    position: absolute;
+    right: -90px;
+    top: -4px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.link-hub .fa-star:active {
+    transform: scale(1.1);
+}
+
+.liked-video {
+    color: var(--blue);
+}
+
+.fa-youtube:hover {
+    color: var(--yt)
+}
+
+.fa-spotify:hover {
+    color: var(--sp)
+}
+
+footer {
+    position: fixed;
+    letter-spacing: 2px;
+    padding-top: 10px;
+}
+
+@keyframes dropfadedown
+{ from {top:-20px; opacity: 0;}
+to {top:0px; opacity: 1}
+}
+
+@-webkit-keyframes dropfadedown 
+{
+from {top:-20px; opacity: 0;}
+to {top:0px; opacity: 1;}
+}
+
+@media only screen and (max-width: 479px) {
+    footer {
+        position: static;
+    }
+}
+
+@media only screen and (max-height: 977) {
+    footer {
+        position: static;
+    }
+}
